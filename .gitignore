@@ -1,0 +1,81 @@
+# Node dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Production
+/build
+
+# Metro / React Native cache
+.expo
+.expo-shared
+.buckd
+.packager
+
+# macOS
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# iOS
+/ios/Pods
+/ios/Podfile.lock
+/ios/*.xcworkspace
+/ios/DerivedData
+*.xcuserstate
+*.xcuserdata
+*.xccheckout
+*.xcodeproj/project.xcworkspace
+
+# Android
+/android/.gradle
+/android/.idea
+/android/.cxx
+/android/local.properties
+/android/app/build
+/android/app/release
+*.keystore
+
+# IDEs
+.vscode/
+.idea/
+
+# Ruby / Bundler
+/vendor/bundle
+*.gem
+.ruby-version
+.rbenv-vars
+.rake_tasks~
+.rspec
+
+# CocoaPods
+Pods/
+*.xcworkspace
+Podfile.lock
+
+# Zeitwerk
+/.zeitwerk
+
+# Generated files
+*.swp
+*.swo
+*.bak
+*.tmp
+*.orig
+*.rej
+
+# Git
+*.orig
+*.patch
