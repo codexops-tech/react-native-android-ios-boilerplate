@@ -90,7 +90,6 @@ export default defineConfig([
         },
       ],
       '@typescript-eslint/no-var-requires': ['warn'],
-
       'eslint-plugin-prettier/prettier': [
         'error',
         {
@@ -111,8 +110,8 @@ export default defineConfig([
           count: 1,
         },
       ],
-      'import/no-duplicates': 'error',
 
+      'import/no-duplicates': 'error',
       'import/order': [
         'error',
         {
@@ -152,6 +151,7 @@ export default defineConfig([
       'no-console': ['error'],
 
       'no-empty-pattern': 'off',
+
       'no-inline-styles/no-inline-styles': 2,
       'no-restricted-imports': [
         'error',
@@ -166,6 +166,7 @@ export default defineConfig([
       'react-hooks/rules-of-hooks': 'error',
       'react-native/no-inline-styles': 'off',
       'react-native/no-raw-text': 'off',
+      'react-native/no-unused-styles': 'warn',
       'react-native/sort-styles': [
         'error',
         'asc',

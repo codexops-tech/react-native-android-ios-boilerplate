@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { NavigationContainerRef } from '@react-navigation/native';
 import {
@@ -7,6 +7,7 @@ import {
 } from '@react-navigation/native-stack';
 import { useSelector } from 'react-redux';
 
+import AnimatedSplashScreen from '@src/components/SplashScreen/AnimatedSplashScreen';
 import {
   LoginScreen,
   NetworkLoggerScreen,
@@ -31,6 +32,26 @@ const screenOptions: NativeStackNavigationOptions = {
 
 export const AppNavigation = () => {
   const isForceUpdateApp = useSelector(isForceUpdate);
+  // const [isLoading, setIsLoading] = useState(true);
+
+  // useEffect(() => {
+  //   // Simulate a loading process (e.g., fetching data)
+  //   const timer = setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 3000); // 3 seconds
+
+  //   return () => clearTimeout(timer);
+  // }, []);
+
+  // if (isLoading) {
+  //   return <AnimatedSplashScreen />;
+  // }
+
+  const [splashDone, setSplashDone] = useState(false);
+
+  if (!splashDone) {
+    return <AnimatedSplashScreen onFinish={() => setSplashDone(true)} />;
+  }
 
   return (
     <>

@@ -79,6 +79,30 @@
         }
       }
     },
+    "react-native-linear-gradient": {
+      "root": "/Users/rbtri/Projects/SummitTechGroup/TundraCast/TunderCastApps/node_modules/react-native-linear-gradient",
+      "name": "react-native-linear-gradient",
+      "platforms": {
+        "ios": {
+          "podspecPath": "/Users/rbtri/Projects/SummitTechGroup/TundraCast/TunderCastApps/node_modules/react-native-linear-gradient/BVLinearGradient.podspec",
+          "version": "2.8.3",
+          "configurations": [],
+          "scriptPhases": []
+        },
+        "android": {
+          "sourceDir": "/Users/rbtri/Projects/SummitTechGroup/TundraCast/TunderCastApps/node_modules/react-native-linear-gradient/android",
+          "packageImportPath": "import com.BV.LinearGradient.LinearGradientPackage;",
+          "packageInstance": "new LinearGradientPackage()",
+          "buildTypes": [],
+          "componentDescriptors": [],
+          "cmakeListsPath": "/Users/rbtri/Projects/SummitTechGroup/TundraCast/TunderCastApps/node_modules/react-native-linear-gradient/android/build/generated/source/codegen/jni/CMakeLists.txt",
+          "cxxModuleCMakeListsModuleName": null,
+          "cxxModuleCMakeListsPath": null,
+          "cxxModuleHeaderName": null,
+          "isPureCxxDependency": false
+        }
+      }
+    },
     "react-native-localize": {
       "root": "/Users/rbtri/Projects/SummitTechGroup/TundraCast/TunderCastApps/node_modules/react-native-localize",
       "name": "react-native-localize",
