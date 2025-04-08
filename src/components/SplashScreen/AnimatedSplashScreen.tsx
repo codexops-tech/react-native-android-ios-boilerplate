@@ -48,7 +48,7 @@ const AnimatedSplashScreen = ({ onFinish }: { onFinish: () => void }) => {
       <Animated.View
         style={[StyleSheet.absoluteFillObject, { opacity: bgFade }]}>
         <LinearGradient
-          colors={['#ff0057', '#ff7c00']}
+          colors={['#1B2B34', '#AEE2FF']}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           style={styles.gradient}
@@ -57,7 +57,7 @@ const AnimatedSplashScreen = ({ onFinish }: { onFinish: () => void }) => {
 
       {/* Logo Animation */}
       <Animated.Image
-        source={Images.APP_LOGO_SPLASH_SCREEN} // replace with your logo
+        source={Images.APP_LOGO_SPLASH_SCREEN_LIGHT} // replace with your logo
         style={[
           styles.logo,
           {

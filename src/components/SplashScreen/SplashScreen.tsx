@@ -15,7 +15,7 @@ const SplashScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <AppImage source={Images.APP_LOGO_SPLASH_SCREEN} style={styles.logo} />
+      <AppImage source={Images.APP_LOGO_SPLASH_SCREEN_LIGHT} style={styles.logo} />
       <ActivityIndicator size="large" color="#007AFF" />
     </View>
   );
