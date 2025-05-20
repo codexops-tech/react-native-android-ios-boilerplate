@@ -1,44 +1,139 @@
 import { ColorSchemeName } from 'react-native';
 
-export const color = {
-  dark: {
-    backgroundColor: '#212121', // light grey
-    primaryColor: '#0a84ff', // bright blue
-    secondaryColor: '#dcdcdc', // dark grey
-    textColor: '#f8f9fa', // off-white
+const commonThemeSettings = {
+  borderRadius: {
+    lg: 24,
+    md: 16,
+    sm: 8,
+    xs: 4,
   },
-  light: {
-    backgroundColor: '#f8f9fa', // grey
-    primaryColor: '#000080', // blue
-    secondaryColor: '#6c757d', // off-white
-    textColor: '#343a40', // dark grey
-  },
-  theme1: {
-    backgroundColor: '#f8f8f8', // light pink
-    primaryColor: '#ff5a5f', // red
-    secondaryColor: '#f2c9c9', // off-white
-    textColor: '#424242', // dark grey
-  },
-  theme2: {
-    backgroundColor: '#e5e5e5', // wheat
-    primaryColor: '#000080', // navy blue
-    secondaryColor: '#f5deb3', // light grey
-    textColor: '#333333', // dark grey
-  },
-  theme3: {
-    backgroundColor: '#f0f0f0', // light yellow
-    primaryColor: '#800000', // maroon
-    secondaryColor: '#ffffe0', // light grey
-    textColor: '#2f4f4f', // dark slate grey
-  },
-  theme4: {
-    backgroundColor: '#f5f5f5', // misty rose
-    primaryColor: '#663399', // rebecca purple
-    secondaryColor: '#ffe4e1', // light grey
-    textColor: '#333333', // dark grey
+  spacing: {
+    lg: 32,
+    md: 16,
+    sm: 8,
+    xs: 4,
   },
 };
 
-export type Palette = (typeof color)[keyof typeof color];
+export const color = {
+  dark: {
+    ...commonThemeSettings,
+    colors: {
+      background: '#212121',
+      border: '#282828',
+      card: '#121212',
+      primary: '#0a84ff',
+      secondary: '#dcdcdc',
+      subtext: '#B3B3B3',
+      text: '#f8f9fa',
+    },
+  },
+  light: {
+    ...commonThemeSettings,
+    colors: {
+      background: '#f8f9fa',
+      border: '#e0e0e0',
+      card: '#ffffff',
+      primary: '#000080',
+      secondary: '#6c757d',
+      subtext: '#B3B3B3',
+      text: '#343a40',
+    },
+  },
+  theme1: {
+    ...commonThemeSettings,
+    colors: {
+      background: '#f8f8f8',
+      border: '#e0e0e0',
 
+      card: '#ffffff',
+      // light pink
+      primary: '#ff5a5f',
+
+      // red
+      secondary: '#f2c9c9',
+
+      // dark grey
+      subtext: '#B3B3B3',
+
+      // off-white
+      text: '#424242',
+    },
+  },
+  theme2: {
+    ...commonThemeSettings,
+    colors: {
+      background: '#e5e5e5',
+      border: '#cccccc',
+
+      card: '#ffffff',
+      // wheat
+      primary: '#000080',
+
+      // navy blue
+      secondary: '#f5deb3',
+
+      // dark grey
+      subtext: '#999999',
+
+      // light beige
+      text: '#333333',
+    },
+  },
+  theme3: {
+    ...commonThemeSettings,
+    colors: {
+      background: '#f0f0f0',
+      border: '#dddddd',
+
+      card: '#ffffff',
+      // light yellow
+      primary: '#800000',
+
+      // maroon
+      secondary: '#ffffe0',
+
+      // dark slate grey
+      subtext: '#666666',
+
+      // light yellow
+      text: '#2f4f4f',
+    },
+  },
+  theme4: {
+    ...commonThemeSettings,
+    colors: {
+      background: '#f5f5f5',
+      border: '#dddddd',
+
+      card: '#ffffff',
+      // misty rose
+      primary: '#663399',
+
+      // rebecca purple
+      secondary: '#ffe4e1',
+
+      // dark grey
+      subtext: '#888888',
+
+      // light rose
+      text: '#333333',
+    },
+  },
+} as const;
+
+export type Palette = (typeof color)[keyof typeof color];
 export type Theme = ColorSchemeName | keyof typeof color;
+
+export const getColor = (theme: Theme): Palette => {
+  if (theme === 'dark' || theme === 'light') {
+    return color[theme];
+  }
+  return color.dark;
+};
+
+export const setColor = (theme: Theme): void => {
+  // This function is a placeholder for future theme customization
+  // It can be used to dynamically update theme colors
+  console.log('Setting theme:', theme);
+};

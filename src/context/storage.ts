@@ -44,11 +44,32 @@ export const deleteStorage = (key: STORAGES_KEY) => {
   return storageMmkv.delete(key);
 };
 
+export const getItem = async (key: string): Promise<string | null> => {
+  try {
+    const value = storageMmkv.getString(key);
+    return value ? JSON.parse(value) : null;
+  } catch (error) {
+    logger('storage getItem', error);
+    return null;
+  }
+};
+
+export const setItem = async (key: string, value: any): Promise<void> => {
+  try {
+    const jsonValue = JSON.stringify(value);
+    storageMmkv.set(key, jsonValue);
+  } catch (error) {
+    logger('storage setItem', error);
+  }
+};
+
 export const storage = {
   deleteStorage,
   getData,
+  getItem,
   getStorageKey,
   setData,
+  setItem,
 };
 
 export const reduxStorage: ReduxStorage = {

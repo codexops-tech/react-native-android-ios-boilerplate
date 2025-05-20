@@ -5,6 +5,9 @@ import { NewsResult } from '@src/services';
 
 export enum Screen {
   FORCE_UPDATE_SCREEN = 'FORCE_UPDATE_SCREEN',
+  HOME = 'HOME',
+  PLAYER = 'PLAYER',
+  PLAYLIST = 'PLAYLIST',
   NETWORK_CHECK = 'NETWORK_CHECK',
   NEWS_DETAIL = 'NEWS_DETAIL',
   NEWS_LIST = 'NEWS_LIST',
@@ -14,6 +17,8 @@ export enum Screen {
 }
 
 export type NavStackParams = {
+  [Screen.HOME]: undefined;
+  [Screen.PLAYLIST]: undefined;
   [Screen.FORCE_UPDATE_SCREEN]: undefined;
   [Screen.NETWORK_CHECK]: undefined;
   [Screen.NEWS_DETAIL]: NewsDetailParams;

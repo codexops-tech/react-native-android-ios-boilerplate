@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import { Palette, scaledSize, scaleHeight, scaleWidth } from '@src/utils';
 
-export const loginStyles = ({ backgroundColor, secondaryColor }: Palette) =>
+export const loginStyles = ({ colors }: Palette) =>
   StyleSheet.create({
     container: {
       alignItems: 'center',
@@ -10,7 +10,7 @@ export const loginStyles = ({ backgroundColor, secondaryColor }: Palette) =>
       justifyContent: 'center',
     },
     content: {
-      backgroundColor: backgroundColor,
+      backgroundColor: colors.background,
       borderRadius: scaledSize(30),
       flex: 2,
       paddingHorizontal: scaleWidth(15),
@@ -19,7 +19,7 @@ export const loginStyles = ({ backgroundColor, secondaryColor }: Palette) =>
     },
     fieldContainer: {},
     header: {
-      backgroundColor: secondaryColor,
+      backgroundColor: colors.secondary,
       flex: 1,
     },
     input: {

@@ -22,17 +22,17 @@ export const BaseLayout = React.memo(({ children, style }: BaseLayoutProps) => {
     <SafeAreaView style={[styles.safeAreaStyle, style]}>
       <StatusBar
         barStyle={appTheme === 'dark' ? 'light-content' : 'dark-content'}
-        backgroundColor={color.backgroundColor}
+        backgroundColor={color.colors.background}
       />
       {children}
     </SafeAreaView>
   );
 });
 
-export const baseLayoutStyles = ({ backgroundColor }: Palette) =>
+export const baseLayoutStyles = ({ colors }: Palette) =>
   StyleSheet.create({
     safeAreaStyle: {
-      backgroundColor: backgroundColor,
+      backgroundColor: colors.background,
       flex: 1,
     },
   });

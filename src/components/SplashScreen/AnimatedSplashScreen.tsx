@@ -1,6 +1,11 @@
 // AnimatedSplashScreen.tsx
 import React, { useEffect, useRef } from 'react';
-import { Animated, Dimensions, StyleSheet } from 'react-native';
+import {
+  ActivityIndicator,
+  Animated,
+  Dimensions,
+  StyleSheet,
+} from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -66,16 +71,17 @@ const AnimatedSplashScreen = ({ onFinish }: { onFinish: () => void }) => {
         ]}
         resizeMode="contain"
       />
+      <ActivityIndicator size="large" color="#007AFF" />
     </Animated.View>
   );
 };
 
-const animatedSplashScreenStyles = ({ backgroundColor }: Palette) =>
+const animatedSplashScreenStyles = ({ colors }: Palette) =>
   StyleSheet.create({
     container: {
       ...StyleSheet.absoluteFillObject,
       alignItems: 'center',
-      backgroundColor: backgroundColor,
+      backgroundColor: colors.background,
       justifyContent: 'center', // fallback background
       zIndex: 999,
     },

@@ -22,7 +22,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { useColor } from '@src/context';
-import { Palette } from '@src/utils';
+import { color, Palette } from '@src/utils';
 
 import { InputProps } from './TextInputProps';
 import { Text } from '../Text/Text';
@@ -332,7 +332,7 @@ export const Input = React.memo(
   })
 );
 
-const inputStyles = ({ backgroundColor }: Palette) =>
+const inputStyles = ({ colors }: Palette) =>
   StyleSheet.create({
     errorView: {
       marginHorizontal: 16,
@@ -365,7 +365,7 @@ const inputStyles = ({ backgroundColor }: Palette) =>
     },
     outline: {},
     outlineLabelGap: {
-      backgroundColor: backgroundColor,
+      backgroundColor: colors.background,
       end: -4,
       position: 'absolute',
       start: -4,

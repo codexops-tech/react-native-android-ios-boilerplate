@@ -1,81 +1,93 @@
-import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
 
 import { StorageKeys } from '@src/constants';
-import { color, Palette, Theme } from '@src/utils';
+import { getColor, setColor } from '@src/utils/color';
 
 import { storage } from './storage';
 
-export interface AppThemeContextType {
-  /**
-   * The appTheme variable is used to define the color scheme used for the application. It takes a ColorSchemeName as its value.
-   */
-  appTheme: Theme;
-  /**
-   * This function is used to set the theme of the application. It takes a single argument, _theme, which should be of type ColorSchemeName.
-   * @example setAppTheme('dark');
-   * @param theme ColorSchemeName
-   * @returns void
-   */
-  setAppTheme: (theme: Theme) => void;
-  /**
-   * Get app palette colors.
-   */
-  color: Palette;
+interface ThemeContextType {
+  color: {
+    colors: {
+      background: string;
+      card: string;
+      text: string;
+      textSecondary: string;
+      border: string;
+      primary: string;
+      secondary: string;
+      subtext: string;
+    };
+    borderRadius: {
+      lg: number;
+      md: number;
+      sm: number;
+      xs: number;
+    };
+    spacing: {
+      lg: number;
+      md: number;
+      sm: number;
+      xs: number;
+    };
+  };
+  setTheme: (theme: 'light' | 'dark' | 'system') => Promise<void>;
 }
 
-export const AppThemeContext = createContext<AppThemeContextType | undefined>(
-  undefined
-);
+const ThemeContext = createContext<ThemeContextType | null>(null);
 
 export const useColor = () => {
-  const context = useContext(AppThemeContext);
-  if (!context) throw Error('useColor must be used inside AppThemeContext');
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useColor must be used within a ThemeProvider');
+  }
   return context;
 };
 
-export const ThemeProvider = ({ children }: React.PropsWithChildren) => {
-  const colorScheme = useColorScheme();
-
-  const [appTheme, setTheme] = useState<Theme>(colorScheme);
-
-  /**
-   * For setAppTheme change app theming.
-   * setTheme(ColorSchemeName)
-   * @return void change app Theme.
-   */
-  const setAppTheme = useCallback((theme: Theme) => {
-    storage.setData(StorageKeys.APP_THEME, theme);
-    setTheme(theme);
-  }, []);
-
-  const value: AppThemeContextType = useMemo(() => {
-    return {
-      appTheme,
-      color: color[appTheme || 'light'],
-      setAppTheme,
-    };
-  }, [appTheme, setAppTheme]);
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const systemColorScheme = useColorScheme();
+  const [theme, setThemeState] = useState<'light' | 'dark' | 'system'>('dark');
 
   useEffect(() => {
-    const theme = storage.getData(StorageKeys.APP_THEME);
-    if (theme) {
-      setTheme(theme);
-    } else {
-      setTheme(colorScheme);
-    }
-  }, [colorScheme, setAppTheme]);
+    // Load saved theme preference
+    const loadTheme = async () => {
+      const savedTheme = storage.getData(StorageKeys.APP_THEME);
+      if (savedTheme) {
+        setThemeState(savedTheme as 'light' | 'dark' | 'system');
+      }
+    };
+    loadTheme();
+  }, []);
+
+  const setTheme = async (newTheme: 'light' | 'dark' | 'system') => {
+    setThemeState(newTheme);
+    storage.setData(StorageKeys.APP_THEME, newTheme);
+  };
+
+  const effectiveTheme =
+    theme === 'system' ? systemColorScheme || 'dark' : theme;
+  const color = getColor(effectiveTheme);
+
+  // Add textSecondary color
+  const themeColors = {
+    ...color.colors,
+    textSecondary: color.colors.subtext,
+  };
+
+  const contextValue: ThemeContextType = {
+    color: {
+      borderRadius: color.borderRadius,
+      colors: themeColors,
+      spacing: color.spacing,
+    },
+    setTheme,
+  };
 
   return (
-    <AppThemeContext.Provider value={value}>
+    <ThemeContext.Provider value={contextValue}>
       {children}
-    </AppThemeContext.Provider>
+    </ThemeContext.Provider>
   );
 };

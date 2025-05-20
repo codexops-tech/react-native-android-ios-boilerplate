@@ -1,0 +1,50 @@
+module.exports = {
+  env: {
+    'browser': true,
+    'es6': true,
+    'node': true,
+    'react-native/react-native': true,
+  },
+  extends: [
+    '@react-native',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+  ],
+  globals: {
+    __DEV__: true,
+  },
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'react', 'react-hooks'],
+  root: true,
+  rules: {
+    // Disable rules that might be too strict during development
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
+    'no-console': 'off',
+    'no-debugger': 'warn',
+    'no-undef': 'off',
+    'react/prop-types': 'off',
+    '@typescript-eslint/no-empty-interface': 'off',
+    'react/react-in-jsx-scope': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    'react-hooks/exhaustive-deps': 'warn',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    'react-hooks/rules-of-hooks': 'warn',
+    'no-unused-vars': 'warn',
+    'prefer-const': 'warn',
+    'react/display-name': 'off',
+    'react/jsx-key': 'warn',
+    'react/jsx-no-target-blank': 'warn',
+    'react/jsx-no-undef': 'warn',
+    'react/jsx-uses-react': 'warn',
+    'react/jsx-uses-vars': 'warn',
+    'react/no-unescaped-entities': 'off',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
+};

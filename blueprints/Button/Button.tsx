@@ -79,7 +79,7 @@ export const Button = React.memo((props: ButtonProps) => {
       {...props}>
       <View style={[styles.titleContainer, titleContainerStyle]}>
         {props.leftIcon}
-        <Text preset="h3" color={color.textColor} style={titleStyle}>
+        <Text preset="h3" color={color.colors.text} style={titleStyle}>
           {title}
         </Text>
         {props.rightIcon}
@@ -88,11 +88,11 @@ export const Button = React.memo((props: ButtonProps) => {
   );
 });
 
-const buttonStyles = ({ primaryColor }: Palette) =>
+const buttonStyles = ({ colors }: Palette) =>
   StyleSheet.create({
     buttonContainer: {
       alignItems: 'center',
-      backgroundColor: primaryColor,
+      backgroundColor: colors.primary,
       borderRadius: moderateScale(60),
       height: scaleHeight(45),
       width: '100%',

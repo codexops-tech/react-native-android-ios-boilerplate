@@ -2,33 +2,33 @@ import { StyleSheet } from 'react-native';
 
 import { Palette, scaledSize, scaleHeight, scaleWidth } from '@src/utils';
 
-export const forceUpdateStyles = ({ backgroundColor, textColor }: Palette) =>
+export const forceUpdateStyles = ({ colors }: Palette) =>
   StyleSheet.create({
     buttonContainer: {
       marginTop: scaleHeight(40),
     },
     container: {
-      backgroundColor: backgroundColor,
+      backgroundColor: colors.background,
       flex: 1,
       justifyContent: 'center',
       paddingHorizontal: scaleWidth(35),
     },
     messageStyle: {
-      color: textColor,
+      color: colors.text,
       fontSize: scaledSize(18),
       marginBottom: scaleHeight(40),
       textAlign: 'center',
     },
     retryButton: {
-      backgroundColor: backgroundColor,
-      borderColor: textColor,
+      backgroundColor: colors.primary,
+      borderColor: colors.text,
       borderWidth: scaleWidth(1),
       marginTop: scaleHeight(20),
     },
     retryText: {
-      color: textColor,
+      color: colors.text,
     },
     updateText: {
-      color: backgroundColor,
+      color: colors.background,
     },
   });

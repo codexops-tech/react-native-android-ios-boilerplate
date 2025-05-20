@@ -24,11 +24,11 @@ const SplashScreen: React.FC = () => {
   );
 };
 
-const splashScreenStyles = ({ backgroundColor }: Palette) =>
+const splashScreenStyles = ({ colors }: Palette) =>
   StyleSheet.create({
     container: {
       alignItems: 'center',
-      backgroundColor: backgroundColor,
+      backgroundColor: colors.background,
       flex: 1,
       justifyContent: 'center',
     },

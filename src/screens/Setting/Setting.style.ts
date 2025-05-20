@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import { Palette, scaled, scaleHeight, scaleWidth } from '@src/utils';
 
-export const settingStyles = ({ primaryColor }: Palette) =>
+export const settingStyles = ({ colors }: Palette) =>
   StyleSheet.create({
     btn: {
       marginTop: scaleHeight(30),
@@ -24,7 +24,7 @@ export const settingStyles = ({ primaryColor }: Palette) =>
     },
     selectedRadio: {
       ...scaled(10),
-      backgroundColor: primaryColor,
+      backgroundColor: colors.primary,
       borderRadius: 10,
     },
     themes: {

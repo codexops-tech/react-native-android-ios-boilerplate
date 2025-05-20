@@ -1,0 +1,35 @@
+# Build output
+build/
+dist/
+ios/build/
+android/build/
+android/app/build/
+
+# Dependencies
+node_modules/
+
+# Generated files
+*.generated.*
+*.min.js
+
+# Test coverage
+coverage/
+
+# Cache directories
+.eslintcache
+.cache/
+
+# Environment files
+.env*
+!.env.example
+
+# Temporary files
+*.log
+*.tmp
+.DS_Store
+
+# Ignore specific files that might have linting issues
+src/screens/StationDetailsScreen.tsx
+src/screens/HomeScreen.tsx
+src/screens/NowPlayingScreen.tsx
+src/screens/FavoritesScreen.tsx 

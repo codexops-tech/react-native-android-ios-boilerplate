@@ -2,16 +2,17 @@ import { useCallback, useEffect } from 'react';
 
 import { useSelector } from 'react-redux';
 
-import { contents, useAppContext } from '@src/context';
+import { contents, useAppContext, useColor } from '@src/context';
 import { NewsResult } from '@src/services';
 import { getNewsData as newsData, setNews, useAppDispatch } from '@src/store';
 import { logger } from '@src/utils';
 
-import { newsListStyles } from './NewsList.style';
+import { mediaPlayerStyles } from './MediaPlayer.style';
 import { Screen } from '../../navigation/appNavigation.type';
 
-const useNewsList = () => {
-  const { color, loader, navigation, services } = useAppContext();
+const useMediaPlayer = () => {
+  const { color } = useColor();
+  const { loader, navigation, services } = useAppContext();
   const dispatch = useAppDispatch();
 
   const data = useSelector(newsData);
@@ -57,8 +58,8 @@ const useNewsList = () => {
     handleNavigationNetwork,
     handleNavigationNewsItem,
     handleSetting,
-    styles: newsListStyles(color),
+    styles: mediaPlayerStyles(color),
   };
 };
 
-export default useNewsList;
+export default useMediaPlayer;
