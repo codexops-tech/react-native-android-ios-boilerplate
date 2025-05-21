@@ -46,19 +46,19 @@ const BottomNavigation = ({ navigation, state }: BottomTabBarProps) => {
 
       <TouchableOpacity
         style={styles.tab}
-        onPress={() => navigate('NowPlaying')}>
+        onPress={() => navigate('Now Playing')}>
         <Ionicons
-          name={isActive('NowPlaying') ? 'play-circle' : 'play-circle-outline'}
+          name={isActive('Now Playing') ? 'play-circle' : 'play-circle-outline'}
           size={24}
           color={
-            isActive('NowPlaying') ? color.colors.primary : color.colors.text
+            isActive('Now Playing') ? color.colors.primary : color.colors.text
           }
         />
         <StyledText
           style={[
             styles.label,
             {
-              color: isActive('NowPlaying')
+              color: isActive('Now Playing')
                 ? color.colors.primary
                 : color.colors.text,
             },
