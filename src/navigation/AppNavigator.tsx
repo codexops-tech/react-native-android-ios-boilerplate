@@ -12,6 +12,7 @@ import FavoritesScreen from '../screens/FavoritesScreen';
 import HomeScreen from '../screens/HomeScreen';
 import NowPlayingScreen from '../screens/NowPlayingScreen';
 import SplashScreen from '../screens/SplashScreen';
+import SettingScreen from '@src/screens/Setting/SettingScreen';
 import StationDetailsScreen from '../screens/StationDetailsScreen';
 import {
   DrawerParamList,
@@ -19,6 +20,8 @@ import {
   RootStackParamList,
 } from '../types/navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Screen } from './appNavigation.type';
+import NetworkLoggerScreen from '@src/screens/NetworkLoggerScreen';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<MainTabParamList>();
@@ -38,14 +41,25 @@ const MainTabs = () => {
         tabBarIcon: ({ focused }) => {
           let iconName;
 
-          if (route.name === 'Home') {
-            iconName = focused ? 'home' : 'home-outline';
-          } else if (route.name === 'NowPlaying') {
-            iconName = focused ? 'play' : 'play-outline';
-          } else if (route.name === 'Favorites') {
-            iconName = focused ? 'heart' : 'heart-outline';
-          } else {
-            iconName = 'home';
+          switch (route.name) {
+            case Screen.HOME.toString():
+              iconName = focused ? 'home' : 'home-outline';
+              break;
+            case Screen.NOWPLAYING.toString():
+              iconName = focused ? 'play' : 'play-outline';
+              break;
+            case Screen.FAVORITES.toString():
+              iconName = focused ? 'heart' : 'heart-outline';
+              break;
+            case Screen.SETTING.toString():
+              iconName = focused ? 'settings' : 'settings-outline';
+              break;
+            case Screen.NETWORK_CHECK.toString():
+              iconName = focused ? 'bug' : 'bug-outline';
+              break;
+            default:
+              iconName = 'home';
+              break;
           }
 
           return (
@@ -69,11 +83,19 @@ const MainTabs = () => {
           height: Platform.OS === 'ios' ? 49 + (insets.bottom || 0) : 56,
           paddingBottom: Platform.OS === 'ios' ? insets.bottom : 0,
         },
-        tabBarTintColor: color.colors.text,
+        // Removed invalid tabBarTintColor, and restored correct string names for Tab.Screen
       })}>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="NowPlaying" component={NowPlayingScreen} />
-      <Tab.Screen name="Favorites" component={FavoritesScreen} />
+      <Tab.Screen name={Screen.HOME} component={HomeScreen} />
+      <Tab.Screen name={Screen.NOWPLAYING} component={NowPlayingScreen} />
+      <Tab.Screen name={Screen.FAVORITES} component={FavoritesScreen} />
+      <Tab.Screen name={Screen.SETTING} component={SettingScreen} />
+      {/* Only show Network Logger in development mode */}
+      {__DEV__ && (
+        <Tab.Screen
+          name={Screen.NETWORK_CHECK}
+          component={NetworkLoggerScreen}
+        />
+      )}
     </Tab.Navigator>
   );
 };

@@ -26,6 +26,7 @@ export const color = {
       secondary: '#dcdcdc',
       subtext: '#B3B3B3',
       text: '#f8f9fa',
+      accent: '#FF375F',
     },
   },
   light: {
@@ -38,6 +39,7 @@ export const color = {
       secondary: '#6c757d',
       subtext: '#B3B3B3',
       text: '#343a40',
+      accent: '#FF2D55',
     },
   },
   theme1: {
@@ -58,6 +60,7 @@ export const color = {
 
       // off-white
       text: '#424242',
+      accent: '#FFB300',
     },
   },
   theme2: {
@@ -78,6 +81,7 @@ export const color = {
 
       // light beige
       text: '#333333',
+      accent: '#FF9500',
     },
   },
   theme3: {
@@ -98,6 +102,7 @@ export const color = {
 
       // light yellow
       text: '#2f4f4f',
+      accent: '#FFD600',
     },
   },
   theme4: {
@@ -118,6 +123,7 @@ export const color = {
 
       // light rose
       text: '#333333',
+      accent: '#FF69B4',
     },
   },
 } as const;

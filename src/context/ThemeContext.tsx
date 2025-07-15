@@ -17,6 +17,7 @@ interface ThemeContextType {
       primary: string;
       secondary: string;
       subtext: string;
+      accent: string;
     };
     borderRadius: {
       lg: number;
@@ -70,10 +71,11 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     theme === 'system' ? systemColorScheme || 'dark' : theme;
   const color = getColor(effectiveTheme);
 
-  // Add textSecondary color
+  // Add textSecondary and accent color
   const themeColors = {
     ...color.colors,
     textSecondary: color.colors.subtext,
+    accent: color.colors.accent,
   };
 
   const contextValue: ThemeContextType = {

@@ -12,3 +12,10 @@ export const topCharts = [
   { image: 'https://placehold.co/140x140', title: 'International Top 50' },
   { image: 'https://placehold.co/140x140', title: 'All Time Top 50' },
 ];
+
+export const mockGenres = [
+  { id: 1, name: "Talk" },
+  { id: 2, name: "Country" },
+  { id: 3, name: "Pop" },
+  { id: 4, name: "Rock" },
+]

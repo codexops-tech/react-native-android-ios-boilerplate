@@ -27,6 +27,11 @@ export type RootStackParamList = {
     bitrate?: string;
     currentTrack?: string;
   };
+  GenreStations: {
+    genreId: string;
+    genreName: string;
+    genreSlug: string;
+  };
 };
 
 declare global {

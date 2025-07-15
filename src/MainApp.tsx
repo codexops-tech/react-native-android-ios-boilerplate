@@ -1,14 +1,17 @@
 import React from 'react';
 
 import { IndicatorView } from '@app/blueprints';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { LocalizationProvider, ThemeProvider } from './context';
-import { AppNavigation, navigationRef } from './navigation/AppNavigation';
 import store, { persistor } from './store';
 import { loader } from './utils';
+import { NavStackParams } from './navigation/appNavigation.type';
+
+export const navigationRef =
+  React.createRef<NavigationContainerRef<NavStackParams>>();
 
 export const MainApp = () => {
   return (
@@ -24,7 +27,7 @@ export const MainApp = () => {
              * @see https://github.com/rt2zz/redux-persist/blob/master/docs/PersistGate.md
              */}
             <PersistGate loading={null} persistor={persistor}>
-              <AppNavigation />
+
               <IndicatorView isLoading={false} ref={loader} />
             </PersistGate>
           </NavigationContainer>

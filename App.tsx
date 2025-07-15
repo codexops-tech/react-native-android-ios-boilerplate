@@ -34,7 +34,9 @@ const AppContent = () => {
 export default function App() {
   useEffect(() => {
     // Hide splash screen once the app is ready
-    RNSplashScreen.hide();
+    setTimeout(() => {
+      RNSplashScreen.hide();
+    }, 1000);
   }, []);
 
   return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
@@ -18,6 +18,8 @@ import {
   STATION_IMAGES,
 } from '../constants/images';
 import { RootStackParamList } from '../types/navigation';
+import { mockGenres } from '../data/mockData';
+// import { GenreChip } from '../components/GenreChip';
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 
@@ -45,6 +47,7 @@ interface Station {
 const HomeScreen = () => {
   const navigation = useNavigation<HomeScreenNavigationProp>();
   const { color } = useColor();
+  const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
 
   const handleStationPress = (station: Station) => {
     navigation.navigate('StationDetails', {
@@ -60,6 +63,15 @@ const HomeScreen = () => {
       subtitle: station.subtitle,
       title: station.title,
       website: station.website,
+    });
+  };
+
+  const handleGenrePress = (genre: any) => {
+    setSelectedGenre(genre.id);
+    navigation.navigate('GenreStations', {
+      genreId: genre.id,
+      genreName: genre.name,
+      genreSlug: genre.slug
     });
   };
 
@@ -108,6 +120,25 @@ const HomeScreen = () => {
     <StyledView
       style={[styles.container, { backgroundColor: color.colors.background }]}>
       <ScrollView showsVerticalScrollIndicator={false}>
+        {/* Genre Chips Section */}
+        <StyledView style={styles.genreSection}>
+          <StyledText style={styles.sectionTitle}>Genres</StyledText>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.genreChipsContainer}
+          >
+            {/* {mockGenres.map((genre) => (
+              // <GenreChip
+              //   key={genre.id}
+              //   name={genre.name}
+              //   isActive={selectedGenre === genre.id}
+              //   onPress={() => handleGenrePress(genre)}
+              // />
+            ))} */}
+          </ScrollView>
+        </StyledView>
+
         {/* Featured Section */}
         <View style={styles.section}>
           <StyledText variant="h2" style={styles.sectionTitle}>
@@ -229,6 +260,13 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+  },
+  genreSection: {
+    paddingVertical: 16,
+    paddingHorizontal: 16,
+  },
+  genreChipsContainer: {
+    paddingRight: 16,
   },
   horizontalScroll: {
     paddingHorizontal: 16,

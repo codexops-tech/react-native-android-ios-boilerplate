@@ -4,8 +4,8 @@ import { useAppContext } from '@src/context';
 import { ContentLanguage } from '@src/i18n';
 import { Theme } from '@src/utils';
 
-import { settingStyles } from './Setting.style';
 import { Screen } from '../../navigation/appNavigation.type';
+import { settingStyles } from './Setting.style';
 
 const themes = ['Dark', 'Light', 'Theme1', 'Theme2', 'Theme3'];
 
@@ -50,7 +50,7 @@ const useSetting = () => {
     language,
     languages,
     navigation,
-    styles: settingStyles(color),
+    styles: settingStyles({ colors: color.colors }),
     themes,
   };
 };
